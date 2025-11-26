@@ -1,0 +1,23 @@
+.div-border {
+    height:100px;
+    width: 100px;
+    border-style: solid;
+    border-color: 1px solid black;
+    background-color: white;
+    flex: 1 0 calc(25% - 10px);
+}
+
+body {
+    background-color: aqua;
+}
+
+#container {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    border-style: solid;
+    border-color: 1px solid black;
+    background-color: black;
+}
