@@ -1,4 +1,4 @@
-.div-border {
+.div-square {
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
     /* border-style: solid;*/
@@ -6,7 +6,7 @@
     background-color: white;
     flex: 0 0 calc(100% / var(--grid-size));
     margin: none;
-
+    border-radius: 3px;
 
 }
 
