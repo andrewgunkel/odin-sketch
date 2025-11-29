@@ -1,27 +1,22 @@
-//const BtnAdd4x4 = document.querySelector("#btn-4x4");
 const BtnClear = document.querySelector("#btn-clear");
-const BtnEnterAmount = document.querySelector("#btn-other");
+const BtnEnterAmount = document.querySelector("#btn-createCanvas");
 const BtnRandomColours = document.querySelector("#btn-random");
 const CONTAINER = document.querySelector("#container");
 
-//const gridSize = 16;
+let randomMode = false;
 
-//BtnAdd4x4.addEventListener("click", add4X4Squares);
+BtnRandomColours.addEventListener("click", () => {
+    randomMode = !randomMode;
+    });
 
-
-/* function add4X4Squares () {
-    for (let i = 0; i < gridSize * gridSize; i++) {
-    addSquare ();
-    document.getElementById("btn-4x4").disabled = true;
-
-}
-
-} */
 
 BtnEnterAmount.addEventListener("click", enterSquareAmount);
 
+    function randomHsl() {
+    return `hsl(${Math.floor(Math.random() * 360)}, 100%, 70%)`;
+}
 
-BtnRandomColours.addEventListener("click", randomColourGenerator);
+
 
 function enterSquareAmount () {
     CONTAINER.innerHTML = "";
@@ -39,19 +34,14 @@ function enterSquareAmount () {
     }
 
     for (let i = 0; i < (gridSize * gridSize); i++) {
-    addSquare ();
-    console.log(gridSize);
-    
-    CONTAINER.style.setProperty("--grid-size", gridSize);
-
-
+        addSquare ();
+        console.log(gridSize);
+        
+        CONTAINER.style.setProperty("--grid-size", gridSize);
+    }
 }
 
-}
 
-function randomColourGenerator () {
-
-}
 
 
 function addSquare () {
@@ -61,33 +51,26 @@ function addSquare () {
 
     newSquare.addEventListener("click", clickSquare, false);
     newSquare.addEventListener("mouseover", hoverSquare, false);
-    //newSquare.addEventListener("mouseout", hoverOffSquare, false);
+
 
     newSquare.classList.add("div-square")
     CONTAINER.appendChild(newSquare);
 
- function clickSquare () {
-    newSquare.style.backgroundColor = "black";
-}
+    function clickSquare () {
+        newSquare.style.backgroundColor = "black";
+    }
 
-function hoverSquare () {
-    //newSquare.dataset.prevColor = newSquare.style.backgroundColor;
-    newSquare.style.backgroundColor = "gray";
+    function hoverSquare () {
+        if (randomMode) {
+            newSquare.style.backgroundColor = randomHsl();
+        } else {
+            newSquare.style.backgroundColor = "gray";
+        }
+    }
 
-    
-    //const hoverFadeMs = setTimeout(hoverOffSquare, 2000);
-
-    
-
-}
-
-
-
-
-
-    function clearSquares () {
-    newSquare.setAttribute("style", "background-color:white")
-}
+        function clearSquares () {
+        newSquare.setAttribute("style", "background-color:white")
+    }
 
 BtnClear.addEventListener("click", clearSquares);
 
