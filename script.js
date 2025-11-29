@@ -1,8 +1,8 @@
 //const BtnAdd4x4 = document.querySelector("#btn-4x4");
 const BtnClear = document.querySelector("#btn-clear");
 const BtnEnterAmount = document.querySelector("#btn-other");
+const BtnRandomColours = document.querySelector("#btn-random");
 const CONTAINER = document.querySelector("#container");
-const isNumber = Number.isInteger || function(number){ return !isNaN(parseFloat(n)) && isFinite(n) }
 
 //const gridSize = 16;
 
@@ -21,29 +21,27 @@ const isNumber = Number.isInteger || function(number){ return !isNaN(parseFloat(
 BtnEnterAmount.addEventListener("click", enterSquareAmount);
 
 
+BtnRandomColours.addEventListener("click", randomColourGenerator);
+
 function enterSquareAmount () {
     CONTAINER.innerHTML = "";
-    const gridSize = prompt ("Please enter how many squares you want", "16")
-    //document.getElementById("gridSize").max = "100";
+    let gridSize = prompt ("Please enter how many squares you want", "16")
+    gridSize = Number(gridSize);
 
+    if (
+        Number.isNaN(gridSize) ||
+        !Number.isInteger(gridSize) ||
+        gridSize < 1 ||
+        gridSize > 100
+    ) {
+        alert("Please enter a whole number between 1 and 100.");
+        return;
+    }
 
-/*     if (!isNumber(gridSize)){
-   prompt("Please try again and enter a number");
-} else if (gridSize > 100) {
-    prompt("The number must be less than 100");
-} */
-
-  /*   if (gridSize > 100) {
-            const gridSize = prompt ("Number must be less than 100", "16")
-
-    } */
-
-    //const gridSquared = Math.sqrt(gridSize);
     for (let i = 0; i < (gridSize * gridSize); i++) {
     addSquare ();
     console.log(gridSize);
-    //console.log(gridSquared);
-    //document.getElementById("btn-other").disabled = true;
+    
     CONTAINER.style.setProperty("--grid-size", gridSize);
 
 
@@ -51,6 +49,9 @@ function enterSquareAmount () {
 
 }
 
+function randomColourGenerator () {
+
+}
 
 
 function addSquare () {
@@ -80,23 +81,7 @@ function hoverSquare () {
 
 }
 
-/* function hoverOffSquare () {
 
-    if (newSquare.style.backgroundColor === "black") {
-        newSquare.dataset.prevColor = "black";
-    } else if (newSquare.style.backgroundColor === "gray") {
-        newSquare.style.backgroundColor = "white";
-    }
-    else if (newSquare.dataset.prevColor==="gray") {
-    newSquare.style.backgroundColor = "white";
-    }
-
-    // Below prevents stuck squares if the user overlaps their path. 
-    // Without this, the squares get stuck as gray.
-
-
-
-} */
 
 
 
